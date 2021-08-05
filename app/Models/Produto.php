@@ -16,7 +16,7 @@ class Produto extends Model
     protected string $table = 'tb_produto';
 
     /**
-     * 
+     *
      * @var array $dates
      */
     protected array $dates = [
