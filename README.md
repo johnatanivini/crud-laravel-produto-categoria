@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -61,3 +62,29 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+  # Crud Com Laravel 8 e Bootstrap
+
+  ##Objetivo
+
+  ##Tecnologias utilzadas:
+
+  - Docker
+  - PHP 8+
+  - Laravel 8+
+    - Pacotes Laravel Ui Bootstrap
+  - Bootstrap 5
+  - Swal para alertas
+  - Banco de dados Mysql MariaDb
+
+  #Requisitos negacionais
+  
+  1. CRUD de categorias de produto: Cadastrar categoria, alterar categoria, listar
+    categorias e excluir categoria.
+    
+  2. CRUD de produtos: Cadastrar produto, alterar produto, listar produto e excluir
+    produto.
+
+
+
+>>>>>>> d7a6c5877847150a9ae57cc61be9e83c2c38f693
