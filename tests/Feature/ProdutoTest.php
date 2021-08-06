@@ -49,11 +49,8 @@ class ProdutoTest extends TestCase
         ]);
 
         $produto->nome_produto = 'Bala de Chocolate';
-
         $produto->save();
-
         $produtoAtualizado = Produto::find($produto->id_produto);
-
         $this->assertEquals('Bala de Chocolate', $produtoAtualizado->nome_produto);
     }
 }
