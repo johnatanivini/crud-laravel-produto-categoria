@@ -16,17 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    echo "";
-});
+    return view('welcome');
+})->name('home');
 
-Route::get('/produtos', 'ProdutoController@index');
-Route::get('/produto/{id}', 'ProdutoController@form');
-Route::delete('/produto/{id}', 'ProdutoController@delete');
-Route::put('/produto/{id}', 'ProdutoController@update');
-Route::post('/produto', 'ProdutoController@create');
+Route::get('/produtos', 'ProdutoController@index')->name('produto.listar');
+Route::get('/produto/{id}', 'ProdutoController@create')->name('produto.editar');
+Route::delete('/produto/{id}', 'ProdutoController@delete')->name('produto.delete');
+Route::put('/produto/{id}', 'ProdutoController@update')->name('produto.update');
+Route::get('/produto', 'ProdutoController@create')->name('produto.create');
+Route::post('/produto', 'ProdutoController@save')->name('produto.save');
 
-Route::get('/categorias', 'CategoriaController@index');
-Route::get('/categoria/{id}', 'CategoriaController@form');
-Route::delete('/categoria/{id}', 'CategoriaController@delete');
-Route::put('/categoria/{id}', 'CategoriaController@update');
-Route::post('/categoria', 'CategoriaController@create');
+Route::get('/categorias', 'CategoriaController@index')->name('categoria.listar');
+Route::get('/categoria/{id}', 'CategoriaController@create')->name('categoria.editar');
+Route::delete('/categoria/{id}', 'CategoriaController@delete')->name('categoria.delete');
+Route::put('/categoria/{id}', 'CategoriaController@update')->name('categoria.update');
+Route::post('/categoria', 'CategoriaController@save')->name('categoria.save');
+Route::get('/categoria', 'CategoriaController@create')->name('categoria.create');

@@ -25,7 +25,7 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function form(int $id)
+    public function create(int $id)
     {
         $produtos = $this->produtoRepositoryInterface->find($id);
 
@@ -45,16 +45,16 @@ class ProdutoController extends Controller
         redirect('index')->with('msg', 'Registro removido');
     }
 
-    public function create(ProdutoRequest $produtoRequest)
+    public function save(ProdutoRequest $produtoRequest)
     {
 
         $produto = $this->produtoRepositoryInterface->create($produtoRequest->attributes());
 
         if ($produto) {
-            redirect('index')->withErrors($produtoRequest->validated());
+            redirect('form')->withErrors($produtoRequest->validated());
         }
 
-        redirect('index')->with('success', 'Produto Cadastrado');
+        redirect('form')->with('success', 'Produto Cadastrado');
     }
 
     public function update($id, ProdutoRequest $produtoRequest)

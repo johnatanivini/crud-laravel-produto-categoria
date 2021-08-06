@@ -30,7 +30,7 @@ class CategoriaController extends Controller
         ]);
     }
 
-    public function form(int $id = null)
+    public function create(int $id = null)
     {
         $categoria = new CategoriaProduto();
 
@@ -54,7 +54,7 @@ class CategoriaController extends Controller
         redirect('index')->with('msg', 'Registro removido');
     }
 
-    public function create(CategoriaProdutoRequest $categoriaRequest): void
+    public function save(CategoriaProdutoRequest $categoriaRequest): void
     {
 
         $categoria = $this->categoriaProdutoRepositoryInterface->create($categoriaRequest->attributes());
