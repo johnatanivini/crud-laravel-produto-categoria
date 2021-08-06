@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     {
         $produtos = $this->produtoRepositoryInterface->all();
 
-        view('produto.index', [
+        return view('produto.index', [
             'produtos' => $produtos
         ]);
     }
