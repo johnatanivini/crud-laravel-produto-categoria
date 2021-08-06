@@ -28,7 +28,7 @@
 ![image](https://user-images.githubusercontent.com/2191326/128569649-21271c28-882e-451d-8b4a-c8a0a5a38740.png)
 ## Lista de Categorias
 ![image](https://user-images.githubusercontent.com/2191326/128569717-9c9b415e-7a86-4869-a8f8-4e9ed1d432de.png)
-#cadastro de Categorias
+## cadastro de Categorias
 ![image](https://user-images.githubusercontent.com/2191326/128569773-4316471c-ace5-4a59-a0bc-c5a991c86afc.png)
 
 #Foi utilizado o Docker como ambiente de desenvolimento local
