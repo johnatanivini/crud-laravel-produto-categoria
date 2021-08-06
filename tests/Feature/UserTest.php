@@ -2,10 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\CategoriaProduto;
-use App\Models\Produto;
 use App\Models\User;
-use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

@@ -3,19 +3,12 @@
 namespace Tests\Feature;
 
 use App\Models\CategoriaProduto;
-use App\Models\Produto;
-use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CategoriaProdutoTest extends TestCase
 {
     use RefreshDatabase;
-
-    public function up()
-    {
-
-    }
 
     /**
      * A basic test example.
