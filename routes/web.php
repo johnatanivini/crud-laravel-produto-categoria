@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProdutoController;
+use App\Models\Produto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "";
 });
+
+Route::get('/produtos', 'ProdutoController@index');
