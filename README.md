@@ -10,6 +10,15 @@
   - Swal para alertas
   - Banco de dados Mysql MariaDb
 
+  #Documentacoes
+  
+  1.Laravel
+   - https://laravel.com/docs/8.x
+  2. PHP
+   - https://php.net
+  3. Bootstrap
+   - https://getbootstrap.com/
+
   #Requisitos negacionais
   
   1. CRUD de categorias de produto: Cadastrar categoria, alterar categoria, listar
