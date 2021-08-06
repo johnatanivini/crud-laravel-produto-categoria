@@ -1,8 +1,6 @@
-  # Crud Com Laravel 8 e Bootstrap
-
-  ##Objetivo
-
-  ##Tecnologias utilzadas:
+  # Crud Com Laravel 8 e Bootstrap 
+   
+  ## Tecnologias utilzadas:
 
   - Docker
   - PHP 8+
@@ -19,7 +17,8 @@
     
   2. CRUD de produtos: Cadastrar produto, alterar produto, listar produto e excluir
     produto.
-    
+# Modelo Base de Dados
+![image](https://user-images.githubusercontent.com/2191326/128570629-2153f0fe-f0a7-41bc-bd96-16650ecb4b13.png)    
 #resultados
 
 ## Lista de Produtos
@@ -35,6 +34,7 @@
 - No docker composer estão serviços utilizados.
 
 #Arquitetura
+- Os models, seguem o mesmo padrão como representação do modelo apresentado, em suas PK, FK e nome de tabela, não seguindo o padrão recomentado pelo FW.
 - Foi adicionada nas injeçoes de dependencia, as interfaces responsáveis pelo crud
 - As validaçoes fora utilizadas FormRequests
 - Foi efetuado um pequeno testes, com simulação de crud usando factories
