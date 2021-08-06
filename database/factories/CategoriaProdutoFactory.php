@@ -22,7 +22,7 @@ class CategoriaProdutoFactory extends Factory
     public function definition()
     {
         return [
-            'nome_categoria' => $this->faker->title,
+            'nome_categoria' => $this->faker->title(),
         ];
     }
 }

@@ -11,6 +11,8 @@ class CategoriaProduto extends Model
     use HasFactory;
 
     protected $table = 'tb_categoria_produto';
+    
+    public $timestamps = false;
 
     protected $fillable = [
         'nome_categoria'
