@@ -17,6 +17,8 @@ class Produto extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 'id_produto';
+
     /**
      *
      * @var array $dates
