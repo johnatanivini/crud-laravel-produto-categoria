@@ -8,28 +8,35 @@
         Cadastrar Produto
     </a>
 </div>
-<div class="d-flex flex-column justify-content-center">
+@include('../templates.alerta')
+<table class="mt-5 table table-bordered">
     @foreach ($produtos as $produto)
-    <hr class="line m-0 p-0" />
-        <div class="d-flex flex-row justify-content-center bg-light">
-            <div class="p2 mr2">
+        <tr class="bg-light">
+            <td class="p2 mr2">
                 {{$produto->id_produto}}
-            </div>
-            <div class="p2 mr-2">
+            </td>
+            <td class="p2 mr-2">
                 {{$produto->nome_produto}}
-            </div>
-            <div class="p2 mr-2">
+            </td>
+            <td class="p2 mr-2">
                 {{$produto->valor_roduto}}
-            </div>
-            <div class="p2 mr-2">
+            </td>
+            <td class="p2 mr-2">
                 {{$produto->data_cadastro->format('d-m-Y')}}
-            </div>
-            <div class="p2 m2">
-               <a href="{{ route('produto.editar', ['id'=>$produto->id_produto]) }}" class="btn btn-info">Editar</a>
-               <a href="{{ route('produto.delete', ['id'=>$produto->id_produto]) }}" class="btn btn-danger">Excluir</a>
-            </div>
+            </td>
+            <td class="p2 m2" style="width:2%">
+                <div class="d-flex flex-row">
+                    <a href="{{ route('produto.editar', ['id'=>$produto->id_produto]) }}" class="btn btn-info">Editar</a>
+
+                    <form action="{{ route('produto.delete', ['id'=>$produto->id_produto]) }}" method="POST">
+                        @csrf()
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Remover</button>
+                    </form>
+                </div>
+            </td>
         </div>
         
     @endforeach
-</div>
+</table>
 @endsection

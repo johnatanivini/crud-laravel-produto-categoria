@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProdutoRequest;
+use App\Models\Produto;
+use App\Repositories\Eloquent\CategoriaProdutoRepository;
 use App\Repositories\ProdutoRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class ProdutoController extends Controller
 {
     public function __construct(
-        protected ProdutoRepositoryInterface $produtoRepositoryInterface
+        protected ProdutoRepositoryInterface $produtoRepositoryInterface,
+        protected CategoriaProdutoRepository $categoriaProdutoRepository
     )
     {
     }
@@ -25,24 +29,31 @@ class ProdutoController extends Controller
         ]);
     }
 
-    public function create(int $id)
+    public function create(int $id = null)
     {
-        $produtos = $this->produtoRepositoryInterface->find($id);
+        $produto = new Produto();
 
-        view('produto.index', [
-            'produtos' => $produtos
+        if ($id) {
+
+            $produto = $this->produtoRepositoryInterface->find($id);
+        }
+
+        
+        return view('produto.create', [
+            'produto' => $produto,
+            'categorias' => $this->categoriaProdutoRepository->all()
         ]);
     }
 
     public function delete(int $id)
     {
         $removerProduto = $this->produtoRepositoryInterface->delete($id);
-
+       
         if (!$removerProduto) {
-            redirect('index')->with('error', 'Não foi possivel remover o produto');
+            return redirect()->route('produto.listar')->with('error', 'Produto não foi removido!');
         }
 
-        redirect('index')->with('msg', 'Registro removido');
+        return redirect()->route('produto.listar')->with('success', 'Produto removido!');
     }
 
     public function save(ProdutoRequest $produtoRequest)
@@ -51,21 +62,20 @@ class ProdutoController extends Controller
         $produto = $this->produtoRepositoryInterface->create($produtoRequest->attributes());
 
         if ($produto) {
-            redirect('form')->withErrors($produtoRequest->validated());
+            redirect('produto.create')->withErrors($produtoRequest);
         }
 
-        redirect('form')->with('success', 'Produto Cadastrado');
+        redirect()->route('produto.listar')->with('success', 'Produto Cadastrado');
     }
 
     public function update($id, ProdutoRequest $produtoRequest)
     {
-
         $produto = $this->produtoRepositoryInterface->update($id, $produtoRequest->attributes());
 
         if ($produto) {
-            redirect('index')->withErrors($produtoRequest->validated());
+            redirect('produto.create')->withErrors($produtoRequest);
         }
 
-        redirect('index')->with('success', 'Produto Cadastrado');
+        redirect()->route('produto.listar')->with('success', 'Produto Atualizado');
     }
 }

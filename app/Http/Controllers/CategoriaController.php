@@ -7,6 +7,7 @@ use App\Models\CategoriaProduto;
 use App\Repositories\CategoriaProdutoRepositoryInterface;
 use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\View;
 use Psr\Http\Message\RequestInterface;
@@ -43,15 +44,16 @@ class CategoriaController extends Controller
         ]);
     }
 
-    public function delete(int $id): void
+    public function delete(int $id)
     {
         $removerCategoria = $this->categoriaProdutoRepositoryInterface->delete($id);
 
         if (!$removerCategoria) {
-            redirect('index')->with('error', 'Não foi possivel remover o categoria');
+            return redirect()->route('categoria.listar')->with('error', 'Produto não foi removido!');
         }
 
-        redirect('index')->with('msg', 'Registro removido');
+       
+        return redirect()->route('categoria.listar')->with('success', 'Produto removido!');
     }
 
     public function save(CategoriaProdutoRequest $categoriaRequest): void
