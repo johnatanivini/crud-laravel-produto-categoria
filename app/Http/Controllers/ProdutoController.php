@@ -56,26 +56,22 @@ class ProdutoController extends Controller
         return redirect()->route('produto.listar')->with('success', 'Produto removido!');
     }
 
-    public function save(ProdutoRequest $produtoRequest)
+    public function save(int $id = null, ProdutoRequest $produtoRequest)
     {
 
-        $produto = $this->produtoRepositoryInterface->create($produtoRequest->attributes());
+        if ($id) {
+            $produto = $this->produtoRepositoryInterface->update($id, $produtoRequest->attributes());
+        }
+
+        if (!$id) {
+            $produto = $this->produtoRepositoryInterface->create($produtoRequest->attributes());
+        }
 
         if ($produto) {
-            redirect('produto.create')->withErrors($produtoRequest);
+            redirect()->route('produto.create', ['id' => $produto->id_produto])
+            ->withErrors($produtoRequest->validate());
         }
 
         redirect()->route('produto.listar')->with('success', 'Produto Cadastrado');
-    }
-
-    public function update($id, ProdutoRequest $produtoRequest)
-    {
-        $produto = $this->produtoRepositoryInterface->update($id, $produtoRequest->attributes());
-
-        if ($produto) {
-            redirect('produto.create')->withErrors($produtoRequest);
-        }
-
-        redirect()->route('produto.listar')->with('success', 'Produto Atualizado');
     }
 }

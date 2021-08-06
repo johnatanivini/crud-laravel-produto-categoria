@@ -23,7 +23,7 @@
         <form acion="/produto/{{$produto->id_produto}}" method="POST" autocomplete="off">
             @csrf
             @if ($produto->id_produto)
-                <input type="hidden" name="_method" value="PUT"   
+                <input type="hidden" name="_method" value="PUT" />
             @endif
             
             <div class="form-group">
