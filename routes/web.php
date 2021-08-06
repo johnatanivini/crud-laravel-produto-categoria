@@ -20,3 +20,13 @@ Route::get('/', function () {
 });
 
 Route::get('/produtos', 'ProdutoController@index');
+Route::get('/produto/{id}', 'ProdutoController@form');
+Route::delete('/produto/{id}', 'ProdutoController@delete');
+Route::put('/produto/{id}', 'ProdutoController@update');
+Route::post('/produto', 'ProdutoController@create');
+
+Route::get('/categorias', 'CategoriaController@index');
+Route::get('/categoria/{id}', 'CategoriaController@form');
+Route::delete('/categoria/{id}', 'CategoriaController@delete');
+Route::put('/categoria/{id}', 'CategoriaController@update');
+Route::post('/categoria', 'CategoriaController@create');
