@@ -15,8 +15,7 @@ class CreateCategoriaProdutoTable extends Migration
     {
         Schema::create('tb_categoria_produto', function (Blueprint $table) {
             $table->id('id_categoria_planejamento');
-            $table->string('nome_categoria');
-            $table->primary('id_categoria', 'PK_tb_categoria_produto');
+            $table->string('nome_categoria', 150);
         });
     }
 
