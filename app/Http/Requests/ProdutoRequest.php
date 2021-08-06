@@ -24,10 +24,10 @@ class ProdutoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_produto' => 'require | max:150',
-            'valor_produto' => 'require | numeric',
-            'id_categoria_produto' => 'require',
-            'data_cadastro' => 'require | date'
+            'nome_produto' => 'required | max:150',
+            'valor_produto' => 'required | numeric',
+            'id_categoria_produto' => 'required',
+            'data_cadastro' => 'required | date'
         ];
     }
 }

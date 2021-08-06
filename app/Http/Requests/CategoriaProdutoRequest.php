@@ -24,7 +24,7 @@ class CategoriaProdutoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_categoria' => 'require'
+            'nome_categoria' => 'required | max:150'
         ];
     }
 }

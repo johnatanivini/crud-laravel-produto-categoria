@@ -13,3 +13,13 @@
         </span>
     </div>
 @endif
+
+@if($errors->all())
+    <div class="d-flex justify-content-center alert alert-warning mt-5">
+    @foreach ($errors->all() as $error)
+        <span data-dismiss="alert">
+            <div>{{ $error }}</div>
+        </span>
+        @endforeach
+    </div>
+@endif

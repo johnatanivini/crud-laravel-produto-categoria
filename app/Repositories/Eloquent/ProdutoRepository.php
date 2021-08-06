@@ -38,13 +38,16 @@ class ProdutoRepository extends BaseRepository implements ProdutoRepositoryInter
 
     public function update(int $id, array $attributes): ?Produto
     {
+        /**
+         * @var Produto $produto
+         */
         $produto = $this->model->find($id);
 
         if (!$produto) {
             return null;
         }
 
-        $produto->attributes = $attributes;
+        $produto->setRawAttributes($attributes);
 
         $produto->update();
 

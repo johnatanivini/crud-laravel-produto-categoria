@@ -6,6 +6,7 @@ use App\Http\Requests\ProdutoRequest;
 use App\Models\Produto;
 use App\Repositories\Eloquent\CategoriaProdutoRepository;
 use App\Repositories\ProdutoRepositoryInterface;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Psr\Http\Message\RequestInterface;
@@ -34,7 +35,6 @@ class ProdutoController extends Controller
         $produto = new Produto();
 
         if ($id) {
-
             $produto = $this->produtoRepositoryInterface->find($id);
         }
 
@@ -58,20 +58,24 @@ class ProdutoController extends Controller
 
     public function save(int $id = null, ProdutoRequest $produtoRequest)
     {
+            $validated = $produtoRequest->validated();
+            
+        if (!$validated) {
+            return redirect()->route('categoria.create', ['id' => $id])
+            ->withErrors($validated);
+        }
 
         if ($id) {
-            $produto = $this->produtoRepositoryInterface->update($id, $produtoRequest->attributes());
+            $this->produtoRepositoryInterface
+            ->update($id, request()->except('_token', '_method'));
         }
 
         if (!$id) {
-            $produto = $this->produtoRepositoryInterface->create($produtoRequest->attributes());
+            $this->produtoRepositoryInterface
+            ->create(request()->except('_token', '_method'));
         }
 
-        if ($produto) {
-            redirect()->route('produto.create', ['id' => $produto->id_produto])
-            ->withErrors($produtoRequest->validate());
-        }
+        return redirect()->route('produto.listar')->with('success', 'Produto salvo');
 
-        redirect()->route('produto.listar')->with('success', 'Produto Cadastrado');
     }
 }

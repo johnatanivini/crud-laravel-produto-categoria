@@ -24,10 +24,10 @@ class CategoriaController extends Controller
     public function index()
     {
         
-        $produtos = $this->categoriaProdutoRepositoryInterface->all();
+        $categorias = $this->categoriaProdutoRepositoryInterface->all();
 
-        view('categoria.index', [
-            'categorias' => $produtos
+        return view('categoria.index', [
+            'categorias' => $categorias
         ]);
     }
 
@@ -39,7 +39,7 @@ class CategoriaController extends Controller
             $categoria = $this->categoriaProdutoRepositoryInterface->find($id);
         }
 
-        view('categoria.form', [
+        return view('categoria.create', [
             'categoria' => $categoria
         ]);
     }
@@ -49,34 +49,30 @@ class CategoriaController extends Controller
         $removerCategoria = $this->categoriaProdutoRepositoryInterface->delete($id);
 
         if (!$removerCategoria) {
-            return redirect()->route('categoria.listar')->with('error', 'Produto não foi removido!');
+            return redirect()->route('categoria.listar')->with('error', 'Categoria não foi removida!');
         }
 
-       
-        return redirect()->route('categoria.listar')->with('success', 'Produto removido!');
+        return redirect()->route('categoria.listar')->with('success', 'Categoria removida!');
     }
 
-    public function save(CategoriaProdutoRequest $categoriaRequest): void
+    public function save(int $id = null, CategoriaProdutoRequest $categoriaProdutoRequest)
     {
 
-        $categoria = $this->categoriaProdutoRepositoryInterface->create($categoriaRequest->attributes());
-
-        if ($categoria) {
-            redirect('form')->withErrors($categoriaRequest->validated());
+        if (!$categoriaProdutoRequest->validated()) {
+            return redirect()->route('categoria.create', ['id' => $id])
+            ->withErrors($categoriaProdutoRequest);
         }
 
-        redirect('form')->with('success', 'Categoria Cadastrada');
-    }
-
-    public function update($id, CategoriaProdutoRequest $categoriaRequest): void
-    {
-
-        $categoria = $this->categoriaProdutoRepositoryInterface->update($id, $categoriaRequest->attributes());
-
-        if ($categoria) {
-            redirect('form')->withErrors($categoriaRequest->validated());
+        if ($id) {
+            $this->categoriaProdutoRepositoryInterface
+            ->update($id, request()->except('_token', '_method'));
         }
 
-        redirect('form')->with('success', 'categoria Cadastrado');
+        if (!$id) {
+            $this->categoriaProdutoRepositoryInterface
+            ->create(request()->except('_token', '_method'));
+        }
+
+        return redirect()->route('categoria.listar')->with('success', 'Categoria salva com sucesso!');
     }
 }

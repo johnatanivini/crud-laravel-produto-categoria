@@ -32,5 +32,5 @@ Route::get('/categoria/{id}', 'CategoriaController@create')->name('categoria.cre
 Route::get('/categoria', 'CategoriaController@create')->name('categoria.create');
 
 Route::delete('/categoria/{id}', 'CategoriaController@delete')->name('categoria.delete');
-Route::put('/categoria/{id}', 'CategoriaController@update')->name('categoria.save');
+Route::put('/categoria/{id}', 'CategoriaController@save')->name('categoria.save');
 Route::post('/categoria', 'CategoriaController@save')->name('categoria.save');

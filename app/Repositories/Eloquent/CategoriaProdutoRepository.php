@@ -21,4 +21,30 @@ class CategoriaProdutoRepository extends BaseRepository implements CategoriaProd
     {
         return $this->model->all();
     }
+
+   /**
+     *
+     * @return bool
+     */
+    public function delete($id): bool
+    {
+        $categoriaProduto = $this->model->find($id);
+        return $categoriaProduto->delete();
+    }
+
+
+    public function update(int $id, array $attributes): ?CategoriaProduto
+    {
+        $categoria = $this->model->find($id);
+
+        if (!$categoria) {
+            return null;
+        }
+
+        $categoria->nome_categoria = $attributes['nome_categoria'];
+
+        $categoria->update();
+
+        return $categoria;
+    }
 }

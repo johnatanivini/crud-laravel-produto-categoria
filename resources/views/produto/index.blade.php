@@ -26,7 +26,7 @@
             </td>
             <td class="p2 m2" style="width:2%">
                 <div class="d-flex flex-row">
-                    <a href="{{ route('produto.editar', ['id'=>$produto->id_produto]) }}" class="btn btn-info">Editar</a>
+                    <a href="/produto/{{$produto->id_produto}}" class="btn btn-info">Editar</a>
 
                     <form action="{{ route('produto.delete', ['id'=>$produto->id_produto]) }}" method="POST">
                         @csrf()
