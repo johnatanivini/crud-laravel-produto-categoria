@@ -13,13 +13,13 @@ class Produto extends Model
     /**
      * @var string $table
      */
-    protected string $table = 'tb_produto';
+    protected $table = 'tb_produto';
 
     /**
      *
      * @var array $dates
      */
-    protected array $dates = [
+    protected $dates = [
         'data_cadastro'
     ];
 
@@ -28,7 +28,7 @@ class Produto extends Model
      *
      * @var array $fillable
      */
-    protected array $fillable = [
+    protected $fillable = [
         'data_cadastro',
         'nome_produto',
         'valor_produto',

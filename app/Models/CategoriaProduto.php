@@ -10,9 +10,9 @@ class CategoriaProduto extends Model
 {
     use HasFactory;
 
-    protected string $table = 'tb_categoria_produto';
+    protected $table = 'tb_categoria_produto';
 
-    protected array $fillable = [
+    protected $fillable = [
         'nome_categoria'
     ];
 
