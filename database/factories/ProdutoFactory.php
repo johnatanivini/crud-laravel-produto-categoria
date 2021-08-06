@@ -28,5 +28,6 @@ class ProdutoFactory extends Factory
             'data_cadastro' => $this->faker->dateTime(),
             'valor_produto' => $this->faker->numberBetween(4, 50),
             'id_categoria_produto' => CategoriaProduto::factory()
+        ];
     }
 }

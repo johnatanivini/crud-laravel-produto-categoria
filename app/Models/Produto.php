@@ -15,6 +15,8 @@ class Produto extends Model
      */
     protected $table = 'tb_produto';
 
+    public $timestamps = false;
+
     /**
      *
      * @var array $dates
